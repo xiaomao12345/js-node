@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>定时器鲜花表白</title>
+		<style>
+	        *{
+	            margin: 0;
+	            padding: 0;
+	            list-style: none;
+	        }
+	
+	        body{
+	            background-color: #000;
+	            text-align: center;
+	            padding: 200px;
+	        }
+	
+	        #pic{
+	            display: none;
+	        }
+	
+	        #time{
+	            font-size: 200px;
+	            color: red;
+	        }
+	    </style>
+	</head>
+	<body>
+		<div id="time">5</div>
+		<img id="pic" src="images/flower.gif" alt="" />
+		<script>
+			window.onload = function() {
+				var time = setInterval(function() {
+					$('time').innerHTML -=1;
+					
+					if($('time').innerHTML === '0') {
+						clearInterval(time);
+						$('time').style.display = 'none';
+						$('pic').style.display = 'block';
+					}
+				},1000);
+			}
+			function $(id) {
+					return typeof id === 'string' ? document.getElementById(id) : null;
+				}
+		</script>
+	</body>
+</html>

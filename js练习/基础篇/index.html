@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>js练习</title>
+		<link href="img/玩具鸭.png" rel="shortcut icon">
+	</head>
+	<body>
+		11111111
+		<script type="text/html">
+			/*控制台输出*/
+			console.log("1111");
+			console.warn("警告！");
+			console.error("这是一个错误！");
+			
+			
+			document.write("王雪娇"); /*在文档中插入内容*/
+			document.write("<div style='color: red;'>王雪娇333333</div>"); /*在文档中标签和插入内容*/
+			
+			/*在网页中弹出输入框，来获取用户输入的信息*/
+			window.prompt("你想对我说些什么？");
+			
+			
+			window.alert("这是一个弹窗");
+			
+			/*在网页中弹出提示框，显示信息，该方法一般与if语句结合使用*/
+			window.confirm("你准备好了么?")
+		</script>
+		<script type="text/html">
+
+			/*var 1k;
+			console.log(1k);  //undefined*/
+			
+			
+			//面试题---不使用中间变量，改变两个交换两个数值变量的值
+			var num1 = 6, num2 = 8;
+			//1.使用中间变量
+			/*var temp; //临时变量
+			temp = num1;
+			num1 = num2;
+			num2 = temp;
+			console.log(num1,num2);  //8 6*/
+			
+			//2.不使用中间变量
+			num1 = num1 + num2;
+			num2 = num1 - num2;
+			num1 = num1 - num2;
+			console.log(num1,num2);  //8 6
+			
+			const a_name = "cindy";
+			console.log(a_name);
+			
+			//常量和字面量的值均不会被改变，常量为储存数据的容器，字面量为等号右侧的值（字符串或者数字）
+			
+			console.log(Number.MAX_VALUE);
+			console.log(Number.MIN_VALUE);
+			console.log(Number.MAX_VALUE + Number.MAX_VALUE);  //最大+最大=无穷大
+			console.log(Number.MIN_VALUE + Number.MIN_VALUE);  //最小+最小=无穷小
+		</script>		
+		<script type="text/html">
+			/*数据转换之string*/
+			
+			
+			
+			/*1. 数值类型调用toString()方法可以携带一个参数，输出对应进制的值*/
+			var num1 = 123;
+			var str = num1.toString();
+			console.log(typeof str);  //string
+			console.log(typeof num1);  //number
+			
+			
+			/* 2. undefined和null没有toString方法，调用则报错  这时候可以调用string（）方法进行强转*/
+			var n1 = null;
+			var str1 = String(n1);
+			console.log(typeof str1);
+			
+			/*3. 使用字符串拼接的形式可以转换string*/
+			var n2 = 12345;
+			var s1 = n2 + "100";
+			console.log(s1);  //12345100
+			console.log(typeof s1);  //string
+			
+			var n3 = undefined;
+			var s2 = n3 + "";
+			console.log(s2);  //undefined
+			console.log(typeof s2);  //string
+			
+			var n4 = null;
+			var s3 = n4 + "";
+			console.log(s3);  //null
+			console.log(typeof s3);  //string
+		</script>		
+		<script type="text/html">
+			/*数据转换之number*/
+			
+			/*如果是纯数字的字符串，直接转换为数字*/
+			/*如果是一个空字符串或者是一个全为空格的字符串，转换为0*/
+			/*如果字符串中有非数字的内容，则将其转换为NaN*/
+			
+			var s4 = "123wwwww";
+			var r4 = Number(s4);
+			console.log(r4);  //NaN
+			console.log(typeof (1 + '1'));
+			
+			/*布尔类型转换为number，true转换为1， false转换为0*/
+		</script>		
+		<script type="text/html">
+
+			/*parseInt()和parseFloat()可以提取字符串中的有效整数值和浮点数*/
+			
+			//parseInt可以传递两个参数，第二个参数表示想要转换为几进制，二进制，八进制，十进制（默认），十六进制
+			var s1 = "10rem";
+			var r1 = parseInt(s1);
+			console.log(r1);  //10
+			
+			var s2 = "10rem123";
+			var r2 = parseInt(s2);
+			console.log(r2);  //10
+			
+			var s3 = "rem001";
+			var r3 = parseInt(s3);
+			console.log(r3);  //NaN
+			
+			var s4 = "";
+			var r4 = parseInt(s4);
+			console.log(r4);  //NaN
+			
+			
+			
+			//parseFloat仅可以传递一个参数，不支持第二个参数，只能解析十进制
+			var s5 = "10.5rem";
+			var r5 = parseFloat(s5);
+			console.log(r5);  //10.5
+			
+			var s6 = "10.2.7.8.9rem";
+			var r6 = parseFloat(s6);
+			console.log(r6);  //10.2
+			
+			
+			//对于非string类型使用parseInt和parseFloat，会将其转换为string类型然后再进行操作
+			var s7 = "false";
+			var r7 = parseFloat(s7);
+			console.log(r7);  //NaN
+			
+			
+			//转成布尔类型 0和空字符串 Null undefined NaN都会转成0，其他会转成1;
+			console.log(Boolean(0));  //false
+			console.log(Boolean(""));  //false
+			console.log(Boolean(null));  //false
+			console.log(Boolean(undefined));  //false
+			console.log(Boolean(NaN));  //false
+			console.log(Boolean(-1));  //true
+			console.log(Boolean("islike"));  //true
+			console.log(Boolean(123333));  //true
+			
+			
+			console.log(true + true);  //2
+		</script>		
+		<script type="text/html">
+			
+			//非number类型进行计算时要先将其转换为number再进行计算
+			console.log(null + 10);  //10
+			console.log("123" + 10);  //12310
+			
+			//任何值和NaN计算都得NaN
+			console.log(NaN + 10);  //NaN
+			
+			//任何值和字符串做加法运算，都会先转换为字符串，然后再和字符串做拼串操作
+			var result = 10 - "123";
+			console.log(typeof result);  //number
+			console.log(result);  //-113
+			result = 1 + "true";
+			console.log(result); //1true
+			console.log(typeof result); //string
+			
+			//Infinity为无穷大，分母为0就得到无穷大
+			var res = 100 / 0;
+			console.log(res);   //Infinity
+		</script>
+		<script type="text/html">
+			//多个赋值运算符可以组成赋值表达式，赋值表达式具备右结合性
+			var value = 5;
+			value *= 2-2;
+			console.log(value);  //0
+			
+			
+			//自增 自减  i++：先用后变     ++i：先变后用
+			var a,b;
+			a = 20;
+			b = 30;
+			res = (a++) + (b++);
+//			res1 = (a--) + (b--);
+			console.log(res,a,b); //50  21  31
+//			console.log(res1,a,b);  //50 19 29
+			
+			
+			var c,d;
+			c = 20;
+			d = 30;
+			res2 = (++c) + (++d);
+//			res3 = (--c) + (--d);
+//			console.log(res2,c,d);    //52  21  31
+			console.log(res2,c,d);   //48  19 29
+		</script>		
+		<script type="text/html">
+			//逻辑运算符
+			/*
+			 * 逻辑与（&&）
+			 * 对于非布尔类型的数值，逻辑与会自动将其转换为布尔类型来判断
+			 * 如果条件A不成立，则返回条件A的数值本身
+			 * 如果条件A成立，不管条件B成不成立都返回条件A数值本身
+			 */
+			/*var result = "123" && "abc";
+			console.log(result);  //abc
+			
+			result = "123" && 0;
+			console.log(result);  //0
+			
+			result = null && 0;
+			console.log(result);  //null*/
+			
+			
+			
+			/*
+			 * 逻辑或（||）
+			 * 对于非布尔类型的数值，逻辑与会自动将其转换为布尔类型来判断
+			 * 如果条件A不成立，不管条件B成不成立都返回条件B数值本身
+			 * 如果条件A成立，则返回条件A的数值本身
+			 */
+			
+			var result = "123" || "abc";
+			console.log(result);  //123
+			
+			result = "123" || 0;
+			console.log(result);  //123
+			
+			result = null || 0;
+			console.log(result);  //0
+		</script>		
+		<script type="text/html">
+			//三目运算符  格式：条件表达式？语句1：语句2   ？和：必须同时存在
+			/*
+			 * 求值规则：
+			 * 如果条件表达式为true，则执行语句1，并返回执行结果
+			 * 如果条件表达式为false，则执行条件2，并返回执行结果
+			 */
+			
+			null?alert("执行语句1"):alert("执行语句2");   //执行语句2
+			"abc"?alert("执行语句1"):alert("执行语句2");   //执行语句1
+		</script>		
+		<script>
+			//例：用户从键盘上输入三个整数，找到最大值并输出			
+			var num1,num2,num3,max;
+			//prompt获取的数为字符串类型，应先把其转换为number类型	 可以用Number(),parseInt(),+()
+			num1 = +(prompt("请输入第一个数："));
+			num2 = +(prompt("请输入第二个数："));
+			num3 = +(prompt("请输入第三个数："));
+			
+			max = num1 > num2 ? num1 : num2;
+			max = max > num3 ? max : num3;
+			
+			console.log(max);
+		</script>
+		
+	</body>
+</html>

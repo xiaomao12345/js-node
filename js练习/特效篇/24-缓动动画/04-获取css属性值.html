@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>获取css属性值</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#box{
+				width: 200px;
+				height: 300px;
+				
+				background-color: red;
+				border: 5px solid #000;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<button id="btn">获取属性值</button>
+		<script src="js/MyTool.js"></script>
+		<script>
+			window.addEventListener('load',function() {
+				var box = myTool.$('box');
+				myTool.$('btn').addEventListener('click' , function() {
+					/*console.log(box.style.width);
+					  console.log(box.style.height);
+					  console.log(box.style.border);
+					  console.log(box.style.backgroundColor);
+					  //这种方式获取不到，只能设置属性值时使用
+					*/
+					
+					console.log(myTool.getCSSAttrValue(box,'width'));
+					console.log(myTool.getCSSAttrValue(box,'height'));
+					console.log(myTool.getCSSAttrValue(box,"border"));
+					console.log(myTool.getCSSAttrValue(box,'backgroundColor'));
+				})
+			})
+		</script>
+	</body>
+</html>

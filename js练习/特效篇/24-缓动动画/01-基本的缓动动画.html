@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>基本缓动动画</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#box{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				position:absolute;
+				/*left: 0;
+				top: 30px;*/
+			}
+		</style>
+	</head>
+	<body>
+		<button id="btn">往右走</button>
+		<div id="box"></div>
+		<script src="js/MyTool.js"></script>
+		<script>
+			window.addEventListener('load',function() {
+				//定义变量
+				var target = 800,timer = null,speed = 0;
+				var box = myTool.$('box');
+				
+				//监听点击
+				myTool.$('btn').addEventListener('click',function () {
+					//先清除后设置
+					clearInterval(timer);
+					
+					//设置定时器
+					timer = setInterval(function() {
+						//设置步长
+						speed = (target - box.offsetLeft) * 0.2;
+						
+						//向上取整
+						console.log("之前" + speed);
+						speed = Math.ceil(speed);
+						console.log("之后" + speed);
+						
+						//动起来
+						box.style.left = box.offsetLeft + speed + 'px';
+						box.innerHTML = box.offsetLeft;
+						
+						//清除定时器
+						if (box.offsetLeft === target) {
+							clearInterval(timer);
+						}
+						
+					},20)
+				})
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>鼠标事件</title>
+		<link href="img/玩具鸭.png" rel="shortcut icon" />
+	</head>
+	<body>
+		 <img id="logo" src="img/img1.jpg" alt="" width="258">
+		 <script>
+		 	window.onload = function() {
+		 		var logo = document.getElementById('logo');
+		 		
+		 		//鼠标进入
+		 		logo.onmouseover = function() {
+		 			logo.src = 'img/img2.jpg';
+		 		};
+		 		
+		 		//鼠标离开
+		 		logo.onmouseout = function() {
+		 			logo.setAttribute('src','img/img1.jpg');
+		 		};
+		 		
+		 		//鼠标移动
+		 		logo.onmousemove = function() {
+		 			console.log("鼠标在图片上移动");
+		 		};
+		 	}
+		 </script>
+	</body>
+</html>

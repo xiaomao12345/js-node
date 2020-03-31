@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>百度换肤</title>
+		<style>
+			*{
+				margin:0;
+				padding: 0;
+				list-style: none;
+			}
+			body{
+				background:url('images/1.jpg') no-repeat;
+				background-size: cover;
+			}
+			#box{
+	            background-color: rgba(255, 255, 255, .5);
+	        }
+			#box ul{
+				justify-content: space-around;
+				display: flex;
+				align-items: center;
+				cursor: pointer;
+			}
+			#box ul li img{
+	            width: 180px;
+	            height: 120px;
+	
+	            margin: 10px 0;
+	        }
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<ul>
+				<li><img src="images/1.jpg" alt=" " /></li>
+				<li><img src="images/2.jpg" alt=" " /></li>
+				<li><img src="images/3.jpg" alt=" " /></li>
+				<li><img src="images/4.jpg" alt=" " /></li>
+				<li><img src="images/5.jpg" alt=" " /></li>
+			</ul>
+		</div>
+		<script id="普通实现"type="text/html" >
+			window.onload = function() {
+				var box = document.getElementById('box');
+				var allList = box.getElementsByTagName('li');
+				
+				for (var i = 0; i < allList.length; i++) {
+					var sLi = allList[i];
+					sLi.index = i + 1;
+					sLi.addEventListener('click',function() {
+						document.body.style.background = 'url("images/'+ this.index +'.jpg") no-repeat';
+					})
+				}
+			}
+		</script>
+		<script id="闭包">
+			window.onload = function() {
+				var box = document.getElementById('box');
+				var allList = box.getElementsByTagName('li');
+				
+				for (var i = 0; i < allList.length; i++) {
+					var sLi = allList[i];
+					
+					(function (index) {
+						sLi.addEventListener('click',function() {
+						    document.body.style.background = 'url("images/'+ index +'.jpg") no-repeat';
+					    })
+					})(i+1)
+				}
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #father{
+            width: 600px;
+            height: 600px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="father">
+        <button id="btn">点我</button>
+    </div>
+<script>
+    window.addEventListener('load' ,function () {
+    	var father = document.getElementById("father");
+    	var btn = document .getElementById("btn");
+    	
+    	btn.addEventListener('click',function(ev) {
+    		//阻止冒泡
+    		if(event && event.stopPropagation()){ //w3c标准
+    			event.stopPropagation();
+    		}else{ //IE系列  IE678
+    			event.cancelBubble = true;
+    		}
+    		alert('点击了按钮');
+    	});
+    	
+    	father.addEventListener('click',function(ev) {
+    		//阻止冒泡
+    		if(event && event.stopPropagation()){ //w3c标准
+    			event.stopPropagation();
+    		}else{ //IE系列  IE678
+    			event.cancelBubble = true;
+    		}
+    		alert('点击了父标签');
+    	});
+    	
+    	document.addEventListener('click',function(ev) {
+    		alert('点击了文档');
+    	})
+    })
+</script>
+</body>
+</html>

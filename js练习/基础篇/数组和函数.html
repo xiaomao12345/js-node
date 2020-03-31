@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>数组和函数</title>
+		<link href="img/玩具鸭.png" rel="shortcut icon" />
+	</head>
+	<body>
+		<script id="数组" type="text/html">
+			
+			<!--创建数组的方式：
+				使用Array构造函数/使用数组字面量
+			-->
+			<!--//使用Array构造函数
+			var arr1 = new Array();
+			var arr2 = new Array(30);
+			var arr3 = new Array("旋之华","yann");
+			
+			//使用数组字面量
+			var arr4 = [];
+			var arr5 = [30];
+			var arr6 = ["旋之华","yann"]; -->
+			//常用操作
+			/*var arr1 = ["张三","李四","王五","张三","李四","王五","李四","王五","张三","李四","王lu"];
+			console.log(arr1[arr1.length - 1]); //arr.length用来取到数组的最后一个值*/
+			
+			
+			//  1.定义一个空数组，在数组中存入个人信息，并输出
+			/*var person = [];
+			person[0] = '小廖';
+			person[1] = '女';
+			person[2] = '撩课学院';
+			console.log(person);
+			
+			var person1 = ['小廖','女','撩课学院'];
+			console.log(person1);*/
+			
+			//  2.遍历数组[10,13,12,6,9,3],将其中的偶数找出来
+			/*var arr = [10,13,12,6,9,3];
+			for (var i=0; i<arr.length; i++) {
+                //console.log(arr[i]);
+				if(arr[i] % 2 == 0) {
+					console.log(arr[i]);  //偶数
+				}
+			}*/
+			
+			
+			//将数组中值为0的去掉，不为0的存入一个新数组
+			<!--var arr = [0,'张飞',0,'关羽',0,'刘备'];
+			var newArr = [];
+			for (var i = 0; i < arr.length; i++) {
+				if(arr[i] !== 0) {
+					newArr[newArr.length] = arr[i];
+				}
+			}
+			console.log(newArr);-->
+			
+			
+			//求一组数中的最大值和最小值，以及所在的位置
+			
+			
+			//  1.定义变量
+			var numArr = [11111,-1,53,21,-421,-52,110];
+			var maxValue = numArr[0],minValue = numArr[0];
+			var maxIndex = 0, minIndex = 0;
+			for (var i = 0; i < numArr.length; i++) {
+				if(numArr[i] > maxValue) {
+					maxValue = numArr[i];
+				    maxIndex = i;
+				}
+				if(numArr[i] < minValue) {
+					minValue = numArr[i];
+				    minIndex = i;
+				}
+			}
+			
+			console.log(maxValue);
+			console.log(minValue);
+			console.log(maxIndex);
+			console.log(minIndex);
+		</script>
+		<script id="函数" type="text/html">
+			//  1.求1-100的和
+			
+			/*function getSum(count) {
+				var sum = 0;
+				for (var i = 1; i <= count ; i++) {
+					sum += i;
+				}
+			}
+			getSum(100);*/
+			
+			
+			//  函数声明方式
+			/*function sum1(a , b) {
+				console.log(a + b);
+			}
+			sum1(3,4);*/
+			
+			
+			// 函数表达式声明方法
+			/*var sum = function(a,b) {
+				console.log(a + b);
+			}
+			sum(10,20);*/
+			
+			
+			//arguments对象    arguments.length表示传递实参的个数
+			/*
+		    1. arguments 对象实际上是所在函数的一个内置类数组对象
+		    2. 每个函数都有一个arguments属性，表示函数的实参集合，这里的实参是重点，就是执行函数时实际传入的参数的集合。arguments不是数组而是一个对象，但它和数组很相似，所以通常称为类数组对象，以后看到类数组其实就表示arguments。arguments对象不能显式的创建，它只有在函数开始时才可用。
+		    3. arguments还有属性callee，length和迭代器Symbol。
+		    4. arguments同样具有length属性，arguments.length 为函数实参个数，可以用arguments[length]显示调用参数
+		    5. arguments对象可以检测参数个数，模拟函数重载
+			*/
+/*			function sum(a ,b) {
+				
+				//比较形参和实参的个数是否相等
+				console.log(arguments.length);
+				console.log(sum.length);
+				console.log(arguments.length === sum.length);
+				
+//				if(arguments.length === sum.length) {
+//					
+//				}
+			}
+			sum(100,200);*/
+			
+			
+			// return 返回值
+			
+			//请写出一个判断一个数是不是偶数的一个函数
+			/*function isEven(num) {
+				//验证
+				if (typeof num !== 'number') {
+					alert("参数不正确");
+					return;
+				}
+				//console.log('00000');
+				//判断
+				if (num % 2 === 0) {
+					return '偶数';
+				}else {
+					return '奇数';
+				}
+			}
+			var f1 = isEven(5001);
+			console.log(f1);*/
+			
+			//模拟一个Math.min(x,y)函数
+			//console.log(Math.min(3,5,1,-6,22));
+			
+			function getMin() {
+				var minValue = arguments[0];
+				for(var i = 0; i < arguments.length; i++) {
+					if(arguments[i] < minValue) {
+						minValue = arguments[i];
+					}
+				}
+				return minValue;
+			}
+			var minValue = getMin(10,2,-13,11);
+			console.log(minValue);
+            //console.log(getMin(10,2,-13,11));
+            
+            
+            //模拟一个Math.max(x,y)函数
+			//console.log(Math.max(3,5,1,-6,22));
+			
+			function getMax() {
+				var maxValue = arguments[0];
+				for(var i = 0; i < arguments.length; i++) {
+					if(arguments[i] < maxValue) {
+						maxValue = arguments[i];
+					}
+				}
+				return maxValue;
+			}
+			var maxValue = getMax(10,2,-13,11);
+			console.log(maxValue);
+            //console.log(getMax(10,2,-13,11));
+		</script>		
+		<script id="函数声明差异化" type="text/html">
+			//函数直接声明和函数表达式声明的区别
+			/* 
+			 * 1.函数声明必须有函数名，而函数表达式的函数名可以省略
+			 * 2.js解析器首先会把当前作用域的函数声明提前到整个作用域的最前面
+			 */
+			function func() {
+				
+			}
+			
+			//匿名函数
+			/*document.onclick = function() {
+				alert("come on");
+			}*/
+			
+			/*setInterval(function () {
+				console.log("每秒爱你一遍！");
+			},1000);*/
+			
+			function fn() {}
+			console.log(typeof fn);  //function
+
+			console.log(typeof fn());  //undefined
+		</script>		
+		<script id="回调函数" type="text/html">
+			//回调函数:回调函数就是一个通过函数调用的函数。
+			//如果你把函数的指针（地址）作为参数传递给另一个函数，当这个指针被用来调用其所指向的函数时，我们就说这是回调函数。
+			
+			//简单计算器
+			function add(num1,num2) {return num1 + num2;}
+			function sub(num1,num2) {return num1 - num2;}
+			function mul(num1,num2) {return num1 * num2;}
+			function divide(num1,num2) {return num1 / num2;}
+			
+			function cal(num1,num2,func) {
+				return func(num1,num2);
+			}
+			
+			var result = cal(10,20,mul);
+			console.log(result);
+			
+			//变量的作用域
+			var name = "wangxuejiao";
+			function f() {
+				name = "xaiomaoaichiyu";
+			}
+			f();
+			console.log(name);
+			
+			var color = "yellow";
+			function getColor() {
+			    var anotherColor = "red";
+			
+			    function swapColor() {
+			        var tmpColor = color;  //yellow
+			        color = anotherColor;  //red
+			        anotherColor = tmpColor;  //yellow
+			    }
+			    swapColor();
+			}
+			
+			getColor();
+			console.log(color);   //red
+			
+			
+			
+			
+		</script>
+		<script id="预解析">
+			/*
+			 * 预解析过程：
+			 * 把变量的声明提升到当前作用域的最前面，只会提升声明，不会提升赋值
+			 * 把函数的声明提升到当前作用域的最前面，只会提升声明，不会提升调用
+			 * 先提升var，再提升function
+			 */
+			/*var num1 = 10;
+			function fn1() {
+				//相当于把var num1;定义提到前面但没有赋值
+				console.log(num1);  //undefined
+				var num1 = 20;
+			}
+			fn1();*/
+			
+			
+			/*console.log(fn2);  //function fn2()
+			function fn2() {
+				console.log("我是函数");
+			}
+			var fn2 = '我是变量';
+			console.log(fn2);  //我是变量*/
+			
+			
+			//面试题
+			    /*var num = 10;
+		        fun();
+		        function fun(){
+		            console.log(num);  //undefined
+		            var num = 20;
+		        }*/
+		        
+		        
+		        /*var a = 18;
+		        f1();
+		        function f1(){
+		            var b=9;
+		            console.log(a);  //undefined
+		            console.log(b);  //9
+		            var a = '123';
+		        }*/
+		        
+		        
+		        
+		        f1();
+	            console.log(c);  //9
+	            console.log(b);  //9
+	            //console.log(a); //报错  
+	            function f1(){
+	                var a = b = c = 9;   //右结合性
+	                console.log(a);  //9
+	                console.log(b);  //9
+	                console.log(c);  //9
+	            }
+		</script>
+	</body>
+</html>

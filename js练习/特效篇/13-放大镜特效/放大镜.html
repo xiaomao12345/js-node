@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>放大镜特效</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			#box{
+				width: 350px;
+				height: 350px;
+				position: relative;
+                margin: 20px 0 0 100px;
+                
+			}
+			#small_box{
+				width: 100%;
+				height: 100%;
+				border: 1px solid #ccc;
+				box-sizing: border-box;
+				position: relative;
+			}
+			#small_box img{
+				width: 100%;
+				height: 100%;
+			}
+			#mask{
+				width: 100px;
+				height: 100px;
+				position: absolute;
+				background-color: rgba(255,255,0,0.4);
+				cursor: move;
+				left: 0;
+                top:0;
+                
+                
+                display: none;
+			}
+			#big_box{
+				width: 600px;
+				height: 600px;
+				border: 1px solid #ccc;
+				
+				position: absolute;
+				left: 360px;
+				top: 0;
+				
+				overflow: hidden;
+				display: none;
+			}
+			#big_box img{
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			#list{
+				margin: 20px 0 0 100px;
+			}
+			#list ul li{
+				float: left;
+				margin: 10px;
+				border: 1px solid #ccc;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div id="small_box">
+				<img src="images/pic001.jpg" alt=""/>
+				<span id="mask"></span>
+			</div>
+			<div id="big_box">
+				<img src="images/pic01.jpg" alt=""/>
+			</div>
+		</div>
+		<div id="list">
+			<ul>
+				<li><img src="images/pic0001.jpg" alt="" /></li>
+				<li><img src="images/pic0002.jpg" alt="" /></li>
+				<li><img src="images/pic0003.jpg" alt="" /></li>
+			</ul>
+		</div>
+		<script>
+			window.addEventListener('load' , function(ev) {
+				 // 1. 获取需要的标签
+				var box = document.getElementById('box');
+				var s_box = box.children[0];
+				var mask = s_box.children[1];
+				var b_box = box.children[1];
+				var b_img = b_box.children[0];
+				var list_lis = document.getElementById('list').getElementsByTagName('li');
+				
+				
+				// 2. 监听鼠标进入小盒子
+				s_box.addEventListener('mouseover',function(evt) {
+					// 2.1 把隐藏的内容显示
+					mask.style.display = 'block';
+					b_box.style.display = 'block';
+					
+					//  2.2监听鼠标移动
+					s_box.addEventListener('mousemove',function(event) {
+						var event = event || window.event;
+						
+						//2.3 求出鼠标坐标
+						var pointX = event.pageX - box.offsetLeft - mask.offsetWidth * 0.5;
+						var pointY = event.pageY - box.offsetTop - mask.offsetHeight * 0.5;
+						//console.log(pointX , pointY);
+						//2.4边界检测
+						if (pointX < 0 ) {
+							pointX = 0
+						}else if(pointX > s_box.offsetWidth - mask.offsetWidth - 2) {
+							pointX = s_box.offsetWidth - mask.offsetWidth - 2;
+						}
+						if (pointY < 0 ) {
+							pointY = 0
+						}else if(pointY > s_box.offsetHeight - mask.offsetHeight -2) {
+							pointY = s_box.offsetHeight - mask.offsetHeight - 2;
+						}
+						
+						//2.5让放大镜移动起来
+						mask.style.left = pointX + 'px';
+						mask.style.top = pointY + 'px';
+						
+						//2.6让大盒子中的图片走起来
+						/*
+						 smallX / bigX = s_box.width / b_box.width
+						 bigX = smallX / (s_box.width / b_box.width)
+						*/
+						
+						b_img.style.left = - pointX / (s_box.offsetWidth / b_box.offsetWidth) + 'px';
+					    b_img.style.top = - pointY / (s_box.offsetHeight / b_box.offsetHeight) + 'px';
+					    
+					})
+				});
+				
+				
+				// 3. 监听鼠标离开小盒子
+				s_box.addEventListener('mouseout',function(evt) {
+					// 2.1 把显示的内容隐藏
+					mask.style.display = 'none';
+					b_box.style.display = 'none';
+				})
+				
+				
+				// 4. 遍历列表的图片
+				for (var i = 0; i < list_lis.length; i++) {
+					(function (i) {
+		                var img = list_lis[i];
+		                img.onclick = function () {
+		                    s_box.children[0].src = "images/pic00"+ (i + 1) +".jpg";
+		                    b_img.src = "images/pic0"+ (i + 1) +".jpg"
+		                }
+		            })(i);
+				}
+			})
+		</script>
+	</body>
+</html>

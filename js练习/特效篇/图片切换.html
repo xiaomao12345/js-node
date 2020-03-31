@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>图片切换</title>
+		<link href="img/玩具鸭.png" rel="shortcut icon" />
+	</head> 
+	<body>
+		<div id="b">
+			<img id="icon" src="img/icon_01.png" />
+			<p></p>
+			<button id="prev">上一张</button>
+			<button id="next">下一张</button>
+		</div>
+		<script>
+			window.onload = function() {
+				var icon = document.getElementById('icon');
+				var prev = document.getElementById('prev');
+				var next = document.getElementById('next');
+				
+				var currentIndex = 1, minIndex = 1, maxIndex = 9;
+				prev.onclick = function() {
+					if(currentIndex === minIndex) {
+						currentIndex = maxIndex;
+					}else{
+						currentIndex--;
+					}
+					icon.setAttribute('src','img/icon_0' + currentIndex +'.png');
+					//console.log(icon.src);
+				};
+				
+				next.onclick = function() {
+					if(currentIndex === maxIndex) {
+						currentIndex = minIndex;
+					}else{
+						currentIndex++;
+					}
+					icon.setAttribute('src','img/icon_0' + currentIndex +'.png');
+					//console.log(icon.src);
+				}
+			}
+		</script>
+	</body>
+</html>

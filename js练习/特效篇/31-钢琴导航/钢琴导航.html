@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>钢琴导航</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				border: none;
+			}
+			#nav{
+				width: 900px;
+				height: 40px;
+				margin: 100px auto;
+				border: 1px solid #ccc;
+				overflow: hidden;
+			}
+			#ul{
+				width: 910px;
+			}
+			#ul li{
+				float: left;
+				width: 100px;
+	            line-height: 40px;
+	            text-align: center;
+	            border-right: 1px dashed #ccc;
+	            background: url("images/_r1_c1.png") no-repeat 0 0 ;
+	            
+	            position: relative;
+			}
+			#ul li a{
+				text-decoration: none;
+				color: #000;
+				width: 100%;
+	            height: 100%;
+	            display: inline-block;
+			}
+			span{
+				width: 100px;
+				height: 40px;
+				background-color: skyblue;
+				position: absolute;
+				left: 0;
+				top: 40px;
+				z-index: -1;
+			}
+		</style>
+	</head>
+	<body>
+		<nav id="nav">
+			<ul id="ul">
+				<li><a href="">首页</a><span></span><audio src="source/a1.mp3"></audio></li>
+				<li><a href="">新头条</a><span></span><audio src="source/a2.mp3"></audio></li>
+				<li><a href="">电视剧</a><span></span><audio src="source/a3.mp3"></audio></li>
+				<li><a href="">新电影</a><span></span><audio src="source/a4.mp3"></audio></li>
+				<li><a href="">小游戏</a><span></span><audio src="source/a5.mp3"></audio></li>
+				<li><a href="">小说绘</a><span></span><audio src="source/a6.mp3"></audio></li>
+				<li><a href="">旅游假</a><span></span><audio src="source/a7.mp3"></audio></li>
+				<li><a href="">正品购</a><span></span><audio src="source/a8.mp3"></audio></li>
+				<li><a href="">今日团</a><span></span><audio src="source/a9.mp3"></audio></li>
+			</ul>
+		</nav>
+		<script src="js/MyTool.js"></script>
+		<script>
+			window.addEventListener('load',function() {
+				//  1.获取需要标签
+				var ul = myTool.$('ul');
+				var allLis = ul.children;
+				
+				//  2.监听遍历
+				for (var i = 0; i < allLis.length; i++) {
+					//  2.1改变li的背景图片
+					allLis[i].style.backgroundPositionY = (i * -40) + 'px';
+					
+					//  2.2 鼠标进去
+					allLis[i].addEventListener('mouseover',function() {
+						// 2.3 缓动动画
+						myTool.buffer(this.children[1],{'top':0});
+						
+						// 2.4 播放音乐
+		                this.children[2].play();  //音乐播放
+		                this.children[2].currentTime = 0;  //音乐从头开始播放
+					});
+					
+					//  2.1鼠标离开
+					allLis[i].addEventListener('mouseout',function() {
+						myTool.buffer(this.children[1],{'top':40});
+					});
+				}
+				
+				// 3. 监听键盘的点击
+		        document.onkeydown = function (event) {
+		             var e = event || window.event;
+		             // console.log(e.keyCode);
+		             var keyCode = e.keyCode - 49;
+		             
+		             myTool.buffer(allLis[keyCode].children[1], {"top": 0}, function () {
+		                 myTool.buffer(allLis[keyCode].children[1], {"top": 40});
+		             });
+		
+		            // 3.1 播放音乐
+		            allLis[keyCode].children[2].play();
+		            allLis[keyCode].children[2].currentTime = 0;
+		        }
+			})
+		</script>
+	</body>
+</html>

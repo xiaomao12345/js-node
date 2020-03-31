@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>图片显示和隐藏</title>
+		<link href="img/玩具鸭.png" rel="shortcut icon" />
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+				list-style:none;
+			}
+			#e_coder{
+				width: 50px;
+				height: 50px;
+				position: fixed;
+				top: 40%;
+				left: 0;
+				cursor: pointer;
+				background: url('img/e_coder_normal.png') no-repeat;
+			}
+			#e_app{
+				position: absolute;
+				left: 50px;
+				top: -50px;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="e_coder">
+			<div id="e_app">
+				<img src="img/e_coder.jpg" alt="公众号" width="150" />
+			</div>
+		</div>
+		<script>
+			window.onload = function() {
+				var e_coder = document.getElementById('e_coder');
+				var e_app = document.getElementById('e_app');
+				
+				e_coder.onmouseover = function() {
+					//改变背景图片
+					this.style.background = 'url("img/e_coder_selected.png") no-repeat';
+					//二维码出现
+					e_app.style.display = 'block';
+				}
+				
+				e_coder.onmouseout = function() {
+					//改变背景图片
+					this.style.background = 'url("img/e_coder_normal.png") no-repeat';
+					//二维码隐藏
+					e_app.style.display = 'none';
+				}
+			}
+		</script>
+	</body>
+</html>

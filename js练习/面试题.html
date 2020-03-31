@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>面试题</title>
+		<style>
+			ul{
+				width: 300px;
+				height: 50px;
+				background-color: red;
+				letter-spacing: -5px;
+			}
+			li{
+				width: 50px;
+				height: 50px;
+				background-color: blue;
+				display: inline-block;
+			}
+		</style>
+	</head>
+	<body>
+		<!--如何让两个li中间的距离消失
+			1.将li标签放置到一行里面<li></li><li></li>
+			2.给ul标签设置font-size:0;
+			3.letter-space:-5px;
+		-->
+		<ul>
+			<li></li>
+			<li></li>
+		</ul>
+		<script>
+			console.log(typeof {} === 'object');
+			console.log(typeof [] === 'object');
+			console.log([5,9,1] === [5,9,1]);
+			console.log([1,9,1] === [3,9,1]);
+			console.log({} === {});
+			console.log({a:1} === {a:1});
+			//true true false false false  false
+			//后面四个都是对象和对象进行比较，比较的是在内存中的地址，所以都是false
+			
+			const a = [];
+			for(var i = 0; i < 10; i++) {
+				a.push(function(){
+					return console.log(i);
+				})
+			}
+			a[0]();
+			a[1](); 
+			//underfined const a = []里面不能放值
+			
+			
+			/*var m = true;
+			setTimeout(function() {
+				m = false;
+			},3000);
+			while(m) {
+				
+			}
+			alert("ok");*/
+			//永远不能弹出ok 死循环 变量提升，setTimeout会被放置到最后面
+			
+			/*var test = '4399' - 0;
+			console.log(typeof test == 'number');  //true
+			
+			var test1 = null;
+			console.log(typeof test1 == 'object');  //true
+			
+			
+			var test2 = {};
+			console.log(typeof test2 == 'object');   //true
+			
+			var test3 = 1.2;
+			console.log(typeof test3 == 'float');  //false*/
+			
+			/*console.log('one');
+			setTimeout(function() {
+				console.log('two');
+			},0);
+			console.log('three');
+			//one  three two  当setTimeout的时间间隔设置为0的时候，默认先执行后面的内容，等后面执行完再执行改函数
+			*/
+			
+			var color = 'green';
+			var test4399 = {
+				color:'blue',
+				getColor:function(){
+					var color = 'red';
+					console.log(this.color);
+				}
+			}
+			var getColor = test4399.getColor;
+			getColor();
+			test4399.getColor();  //green  blue
+			/*this指向调用它的对象，getColor()为window所调用，指向window，test4399.getColor()中getColor为test4399所调用，指向test4399*/
+		</script>
+	</body>
+</html>

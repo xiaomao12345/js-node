@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>改变背景颜色</title>
+	</head>
+	<body>
+		<script src="js/myFunc.js"></script>
+		<script>
+			/*  当屏幕的宽度>=960时，页面的背景颜色为红色；
+		                    当屏幕的宽度>=640时，页面的背景颜色为蓝色；
+		                    当屏幕的宽度<640时，页面的背景颜色为绿色？
+		    */
+			window.addEventListener('load' ,function() {
+				changeColor();
+				
+				window.addEventListener('resize' ,changeColor);
+				
+				
+				function changeColor() {
+					if (client().width >= 960) {
+						document.body.style.background = 'red';
+					} else if(client().width >= 640){
+						document.body.style.background = 'blue';
+					}else{
+						document.body.style.background = 'green';
+					}
+				}
+				
+			})
+		</script>
+	</body>
+</html>

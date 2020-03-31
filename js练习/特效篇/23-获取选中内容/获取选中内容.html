@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>获取选中内容</title>
+		<style>
+	        *{
+	            margin: 0;
+	            padding: 0;
+	            list-style: none;
+	        }
+	
+	        p{
+	            margin: 100px;
+	            width: 300px;
+	        }
+	
+	        #share_weibo{
+	            width: 26px;
+	            height: 26px;
+	            background: url("images/share.gif");
+	            position: absolute;
+	            display: none;
+	        }
+	    </style>
+	</head>
+	<body>
+		<p id="word">
+			在新闻发生的第一时间，李克强就批示有关部门，要“以小窥大”，进一步考虑如何通过简政放权、放管结合、优化服务，破除        制约社会生产力发展和就业创业的不合理束缚，以主动服务的精神激发市场活力。而11月21日在上海召开的座谈会上，总理再次通过两家小食店的故事“以小窥大”，点题下一阶段政府职能转变和深化“放管服”改革工作。
+		</p>
+
+        <div id="share_weibo"></div>
+        <script src="js/myFunc.js"></script>
+        <script>
+        	window.addEventListener('load',function() {
+        		var selectedText = '';
+        		
+        		$('word').addEventListener('mouseup', function(ev) {
+        			var e = ev || window.event;
+        			
+        			//获取选中文字
+	        		if (window.getSelection) { //标准模式下获取选中的文字
+	        			selectedText = window.getSelection().toString();
+	        		} else{//IE
+	        			selectedText = document.selection.createRange().text;
+	        		}
+	        		
+	        		if(selectedText !== "") {
+	        			$('share_weibo').style.display = 'block';
+	        			
+	        			$('share_weibo').style.left = e.pageX + 'px';
+	        			$('share_weibo').style.top = e.pageY + 'px';
+	        		}
+	        		
+        		});
+        		
+        		//监听文档的点击
+        		document.addEventListener('mousedown',function(ev1) {
+        			var e = ev1 || window.event;
+        			
+        			//获取点击的目标
+        			var targetId = e.target ? e.target.id : e.srcElement.id;
+        			
+        			if(targetId !== 'share_weibo') {
+        				$('share_weibo').style.display = 'none';
+        			}else{
+        				window.location.href = 'http://v.t.sina.com.cn/share/share.php?searchPic=false&title=' + selectedText + '&url=https://github.com/xuanzhihua';
+        			}
+        		})
+        		
+        	})
+        </script>
+	</body>
+</html>

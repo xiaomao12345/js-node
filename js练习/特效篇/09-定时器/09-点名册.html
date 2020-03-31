@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>随机点名</title>
+		<style>
+        body{
+            text-align: center;
+        }
+
+        #name{
+            font-size: 20px;
+            margin-top: 20px;
+        }
+    </style>
+	</head>
+	<body>
+		<button id="begin">开始点名</button>
+	    <button id="end">结束点名</button>
+	    <div id="name"></div>
+	    <script>
+	    	window.onload = function() {
+		        // 1. 获取标签
+		        var begin = document.getElementById("begin");
+		        var end = document.getElementById("end");
+		        var name = document.getElementById("name");
+		
+		        // 2. 定义变量
+		        var timer = null;
+		        var nameArr = ["旋之华", "张三", "李四", "王五", "周杰伦", "谢霆锋", "张三丰"];
+		        name.innerText = nameArr[0];
+		        
+		        // 3.监听点击
+		        begin.onclick = function() {
+		        	clearInterval(timer);
+		        	timer = setInterval(function() {
+		        		//  3.1随机数
+		        		var s_index = parseInt(Math.random() * nameArr.length);
+		        		name.innerText = nameArr[s_index];
+		        	},20)
+		        };
+		        end.onclick = function() {
+		        	clearInterval(timer);
+		        }
+	    		
+	    	}
+	    </script>
+	</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>关闭小广告</title>
+		<link href="img/玩具鸭.png" rel="shortcut icon" />
+		<style>
+	        div{
+	            position: relative;
+	            display: inline-block;
+	        }
+	
+	        #close{
+	            position: absolute;
+	            right: 18px;
+	            top:18px;
+	            cursor: pointer;
+	        }
+	    </style>
+	</head>
+	<body>
+		<div id="box">
+		    <img id="icon" src="img/img1.jpg" alt="" width="258">
+		    <img id="close"  src="img/close.jpg" alt="" width="40">
+		</div>
+		<script>
+			window.onload = function () {
+				var close = document.querySelector('#close');
+				close.onclick = function() {
+					//console.log(this);
+					//this.parentNode.remove();
+					this.parentNode.style.display = 'none';
+				}
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			#box {
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				position: absolute;
+			}
+		</style>
+	</head>
+
+	<body>
+		<button id="btn">往右走</button>
+		<button id="btn1">往左走</button>
+		<div id="box"></div>
+		<script src="js/MyTool.js"></script>
+		<script>
+			window.onload = function() {
+
+				// 0. 变量
+				var box = myTool.$("box");
+
+				// 1. 监听按钮的点击
+				myTool.$("btn").onclick = function() {
+					myTool.buffer1(box, {
+						"left": 800,
+						"top": 120,
+						"width": 230,
+						"height": 400
+					}, function() {
+						myTool.buffer1(box, {
+							"left": 100,
+							"top": 100,
+							"width": 50,
+							"height": 200
+						},null);
+					});
+					
+				};
+
+				myTool.$("btn1").onclick = function() {
+					myTool.buffer1(box, {
+						"left": 100,
+						"top": 100,
+						"width": 50,
+						"height": 200
+					},null);
+				};
+			};
+
+			
+		</script>
+	</body>
+
+</html>

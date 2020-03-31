@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>联动动画</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			img{
+				vertical-align: top;
+			}
+			#box{
+				position: fixed;
+				right: 0;
+				bottom: 0;
+			}
+			#close{
+				width: 25px;
+				height: 25px;
+				position: absolute;
+				cursor:pointer;
+				right: 0;
+				top: 0;
+				background-color: transparent;
+			}
+		</style>
+	<body>
+		<div id="box">
+			<span id="close"></span>
+			<div id="top">
+				<img src="images/top.jpg" />
+			</div>
+			<div id="bottom">
+				<img src="images/bottom.jpg" />
+			</div>
+		</div>
+		<script src="js/MyTool.js"></script>
+		<script>
+			window.addEventListener('load',function(ev) {
+				myTool.$('close').addEventListener('click',function(ev1) {
+					myTool.buffer(myTool.$('bottom'),{'height':0},function() {
+						myTool.buffer(myTool.$('box'),{'width':0},function() {
+							myTool.$('close').style.display = 'none';
+						})
+					})
+				})
+			})
+		</script>
+	</body>
+</html>

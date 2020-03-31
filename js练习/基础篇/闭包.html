@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>闭包</title>
+		<link href="img/玩具鸭.png" rel="shortcut icon" />
+		<style>
+			body{
+				text-align: center;
+			}
+	        li {
+	            background-color: #ccc;
+	            border: 1px solid #000;
+	            cursor: pointer;
+	        }
+	
+	        .current {
+	            background-color: orangered;
+	        }
+	    </style>
+	</head>
+	<body>
+		<img id="l" src="img/left.png" alt="" /><br />
+		<img id="r" src="img/right.png" alt="" />
+		<ul>
+		    <li class="current"></li>
+		    <li></li>
+		    <li></li>
+		    <li></li>
+		    <li></li>
+		    <li></li>
+		    <li></li>
+		    <li></li>
+		    <li></li>
+		    <li></li>
+		    <li></li>
+		    <li></li>
+		    <li></li>
+		    <li></li>
+		    <li></li>
+		    <li></li>
+		    <li></li>
+		    <li></li>
+		    <li></li>
+		    <li></li>
+		</ul>
+		<script type="text/html" >
+			var age = 18;
+		    function test() {
+		        var name = "张三";
+		        console.log(name);
+		    }
+		
+		    test();
+		    
+		    /*闭包的最大用处有两个：
+		     * 一个是可以读取函数内部的变量，另一个就是让这些变量的值始终保持在内存中。*/
+		    function test1() {
+		    	var age = 19;
+		    	return function () {
+		    		console.log(age);
+		    	}
+		    }
+		    var func = test1();
+		    func();
+		    
+		    
+		    //封闭作用域   小闭包
+		    
+		    /*
+			        小闭包技法最大目的: 全局变量私有化
+			        技术优点：
+			        不污染全局空间！
+			        内部所有的临时变量执行完毕都会释放不占内存。
+			        可以保存全局数据。
+			        更新复杂变量。
+            */
+		    (function () { }) ();
+		    ;(function () { }) ();
+		    +(function () { }) ();
+		    -(function () { }) ();
+		    
+		    
+		    
+		    (function () { 
+		    	var age = 18;
+		          console.log(age);
+		    }) ();
+		    
+		    
+		    
+		    (function () { 
+		    	var age = 11118;
+		          console.log(age);
+		    }) ();
+		</script>
+		<script id="高级排他" type="text/html">
+			/*var allLis = document.getElementsByTagName("li");
+			    for (var i = 0; i < allLis.length; i++) {
+			        allLis[i].onmouseover = function () {
+			            for(var j=0; j<allLis.length; j++){
+			                 allLis[j].className = "";
+			            }
+			            this.className = "current";
+			        }
+			}*/
+			
+			    var allLis = document.getElementsByTagName("li");
+			    var lastOne = 0;
+			    for (var i = 0; i < allLis.length; i++) {
+			        (function (index) {
+			            allLis[index].onmouseover = function () {
+			                // 清除
+			                allLis[lastOne].className = "";
+			                // 设置
+			                this.className = "current";
+			                // 赋值
+			                lastOne = index;
+			            }
+			        })(i);
+			    }
+		</script>
+		<script id="参数的传递" type="text/html">
+			/*function test1(x) {
+				return function (y) {
+					alert(x + y);
+				}
+			}
+			test1(10) (9);*/
+			
+			/* 普通方法
+			   var left = 0, right = 0, speed = 50;
+			   var lImg = document.getElementById("l");
+			   var rImg = document.getElementById("r");
+			
+			   lImg.onmousedown = function () {
+			       left -= speed;
+			       this.style.marginLeft = left + "px";
+			   };
+			
+			   rImg.onmousedown = function () {
+			       right += speed;
+			       this.style.marginLeft = right + "px";
+			   };
+			*/
+			
+			/*
+			 //使用闭包实现
+			  function move(speed) {
+			       var num = 0;
+			       return function () {
+			           num += speed;
+			           this.style.marginLeft = num + 'px';
+			       }
+			   }
+			
+			   var lImg = document.getElementById("l");
+			   var rImg = document.getElementById("r");
+			
+			   lImg.onmousedown = move(-50);
+			   rImg.onmousedown = move(50);
+			*/
+		</script>
+		<script id="函数节流">
+			/*  
+			    var timer = null;
+			    window.onresize = function () {
+			        clearTimeout(timer);
+			        timer = setTimeout(function () {
+			            console.log(document.documentElement.clientWidth);
+			        }, 400);
+			    }
+			*/
+			
+			    function throttle(fn, delay) {
+			        var timer = null;
+			        return function () {
+			            clearTimeout(timer);
+			            timer = setTimeout(fn, delay);
+			        }
+			    }
+			
+			    window.onresize = throttle(function () {
+			        console.log(document.documentElement.clientWidth);
+			    }, 400);
+			    
+			   
+		</script>
+	</body>
+</html>

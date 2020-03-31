@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>自定义时间</title>
+	</head>
+	<body>
+		<script type="text/html">
+			window.onload = function() {
+				//当前时间
+				var nDate = new Date();
+				console.log(nDate);
+				
+				//过去时间
+				var preDate = new Date('2019/04/10 08:23:56');
+				console.log(preDate);
+			}
+		</script>
+		<script type="text/html">
+			window.onload = function(){
+				// 1. 声明日期对象
+			    var date = new Date();
+			    // console.log(date);
+			
+			    console.log(date.getDate()); // 日
+			    console.log(date.getDay()); // 星期几
+			    console.log(date.getMonth() + 1); // 月
+			    console.log(date.getFullYear() ); // 完整的年份
+			    console.log(date.getHours() ); // 小时
+			    console.log(date.getMinutes() ); // 分钟
+			    console.log(date.getSeconds() ); // 秒
+			    console.log(date.getMilliseconds() ); // 毫秒
+			    console.log(date.getTime() ); // 时间戳
+			}
+		</script>
+		<script>
+			//写一个函数，格式化日期对象，返回YYYY-MM-dd hh：mm：ss的形式
+			var c = formatDate(new Date());
+			console.log(c);
+			
+			//格式化函数
+			function formatDate(d) {
+				//  1.验证
+				if (!d instanceof Date) {
+					return;
+				}
+				
+				//  2.转化
+				var year = d.getFullYear();
+				var month = d.getMonth() + 1;
+				var date = d.getDate();
+				var hour = d.getHours();
+				var minute = d.getMinutes();
+				var second = d.getSeconds();
+				
+				// 3.转换格式YYYY-MM-dd hh：mm：ss
+				month = month < 10 ? '0'+ month : month;
+				date = date < 10 ? '0'+ date : date;
+				hour = hour < 10 ? '0'+ hour : hour;
+				minute = minute < 10 ? '0'+ minute : minute;
+				second = second < 10 ? '0'+ second : second;
+				
+				return year + '-' + month + '-' + date + ' ' + hour + ':' + minute + ':' + second;
+			}
+		</script>
+	</body>
+</html>

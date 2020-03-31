@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+	        *{
+	            margin: 0;
+	            padding: 0;
+	            list-style: none;
+	        }
+	
+	        #father{
+	            width: 400px;
+	            height: 400px;
+	            background-color: red;
+	            margin: 40px;
+	
+	            position: relative;
+	        }
+	
+	        #box{
+	            width: 200px;
+	            height: 150px;
+	            background-color: blue;
+	            padding: 10px;
+	            border: 5px solid #000;
+	            margin-left: 20px;
+	        }
+	    </style>
+	</head>
+	<body>
+		<div id="father">
+	        <div id="box"></div>
+	    </div>
+		<script>
+			//offsetTop  offsetLeft距离第一个有定位的父级盒子的上边和左边的距离不包括border
+			//若父级盒子没有定位，则以body为准，什么定位都可以绝对相对和固定
+			var box = document.getElementById("box");
+		    console.log(box.offsetLeft);
+		    console.log(box.offsetTop);
+		</script>
+	</body>
+</html>

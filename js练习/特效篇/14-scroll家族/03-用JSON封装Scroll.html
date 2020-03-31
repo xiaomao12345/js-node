@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{
+				height: 3000px;
+			}
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript" src="MyTool/MyTool.js"></script>
+		<script>
+			/*function scroll() {
+				if (window.pageYOffset !== null) {
+					return{
+						"top":window.pageYOffset,
+						"left":window.pageXOffset
+					}
+				} else if(document.compatMode === 'CSS1Compat'){  //w3c
+					return{
+						"top":document.documentElement.scrollTop,
+						"left":document.documentElement.scrollLeft
+					}
+				}
+				return{
+						"top":document.body.scrollTop,
+						"left":document.body.scrollLeft
+				}
+			}*/
+			
+			window.addEventListener('scroll',function() {
+				console.log(myTool.scroll().top);
+			})
+		</script>
+	</body>
+</html>

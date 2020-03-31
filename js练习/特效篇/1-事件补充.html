@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>事件补充</title>
+		<link href="img/玩具鸭.png" rel="shortcut icon" />
+	</head>
+	<body>
+		<button id="btn">点击一下</button>
+		<script>
+			window.onload = function() {
+				var btn = document.getElementById('btn');
+				//覆盖，执行最后一个点击事件
+				/*btn.onclick = function() {
+					window.location.href = 'http://www.qqqq.com';
+				}
+				btn.onclick = function() {
+					window.location.href = 'http://www.baidu.com';
+				}
+				btn.onclick = function() {
+					window.location.href = 'http://www.tmall.com';
+				}*/
+				
+				//不覆盖，全部执行
+				btn.addEventListener('click',function() {
+					alert(0);
+				});
+				btn.addEventListener('click',function() {
+					alert(1);
+				});
+				btn.addEventListener('click',function() {
+					alert(2);
+				});
+				
+				var obj = {
+					a:1,
+				    b:function() {
+				    	alert(this.a);
+				    }
+				}
+				var fun = obj.b;
+				fun();
+                //undefined
+				
+			}
+		</script>
+	</body>
+</html>

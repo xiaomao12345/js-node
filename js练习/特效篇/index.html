@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>DOM</title>
+		<link href="img/玩具鸭.png" rel='shortcut icon' />
+	</head>
+	<body>
+		<!--<div id="box">
+			
+			<span>点我</span>
+			<p>我是一只小小小小鸟</p>
+			
+			<div>11111111111</div>
+		</div>-->
+		<div class="box">
+			<p id="word">撩课学院</p>
+			<button id="btn">按钮</button>
+			<img />
+		</div>
+		
+		<script type="text/html">
+			window.onload = function(ev) {
+			var btn = document.getElementById("btn");
+			btn.onclick = function() {
+				alert("点我！");
+			}
+		} 
+		</script>
+		<script id="获得所有元素节点" type="text/html">
+			//获得所有的元素节点     Element(元素)-1  Attr(属性)-2  Text(文本)-3  Comment(注释)-8 Document(整个文档)-9
+			window.onload = function(ev) {
+				//获取标签
+				var box = document.getElementById("box");
+				//获取标签内所有的节点
+				var allNodeLists = box.childNodes;
+				//console.log(allNodeLists);
+				//过滤元素节点
+				var newListArr = [];
+				allNodeLists.forEach(function(value,key,parent){
+					if (value.nodeType === 1) {
+						newListArr.push(value);
+					}
+				})
+				console.log(newListArr);
+			}
+		</script>
+	    <script id="节点操作" type="text/html">
+	    	//1. CRUD(增删改查)
+	    	window.onload = function() {
+	    		var box = document.getElementsByClassName("box")[0];
+	    		
+	    		//  1. 创建节点
+	    		/*var img = document.createElement("img");
+	    		img.src = "img/玩具鸭.png";
+	    		//box.appendChild(img);
+	    		var btn = document.getElementsByTagName("button")[0];
+	    		box.insertBefore(img,btn);*/
+	    		
+	    		
+	    		//  2. 删除节点
+	    		var btn = document.getElementsByTagName("button")[0];
+	    		//btn.remove();
+	    		//box.removeChild(btn);
+	    		
+	    		//   3.克隆标签
+	    		var newBox = box.cloneNode();  //浅克隆:只是单纯地克隆这个标签，里面的内容不会进行克隆
+	    		console.log(newBox);
+	    		document.body.appendChild(newBox);
+	    		var newBox1 = box.cloneNode(true);  //深克隆:标签里面的内容也会进行克隆
+	    		console.log(newBox1);
+	    		document.body.appendChild(newBox1);  //追加到页面上
+	    	}
+	    </script>
+	    <script id="节点属性">
+	    	//   1.获取：getAttribute(名称)
+	    	window.onload = function() {
+	    		//  1.获取节点
+	    		var img = document.getElementsByTagName("img")[0];
+	    		console.log(img);
+	    		
+	    		
+	    		//  2.设置属性
+	    		img.setAttribute('src','img/玩具鸭.png');
+	    		img.setAttribute('alt','这是一个美女呀');
+	    		
+	    		//  3. 获取标签的属性
+	    		console.log(img.getAttribute('src'));
+	    		console.log(img.getAttribute('alt'));
+	    		//console.log(img.alt);
+	    		
+	    		
+	    		//   4.删除属性
+	    		img.removeAttribute('alt');
+	    	}
+	    </script>
+	</body>
+</html>
+ 

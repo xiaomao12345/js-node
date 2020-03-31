@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>中部导航吸顶</title>
+		<style>
+	        *{
+	            margin: 0;
+	            padding: 0;
+	            list-style: none;
+	            border:none
+	        }
+	        img{
+	            vertical-align: top;
+	            width: 100%;
+	        }
+	
+	        section{
+	            width: 70%;
+	            margin: 0 auto;
+	        }
+	
+	        .nav{
+	            position: fixed;
+	            left: 0;
+	            top:0;
+	            width: 100%;
+	        }
+	
+	    </style>
+	</head>
+	<body>
+	   <header id="head">
+	       <img src="images/top.png" alt="">
+	   </header>
+	   <nav id="nav">
+	       <img src="images/nav.png" alt="">
+	   </nav>
+	   <section>
+	       <img src="images/body01.png" alt="">
+	       <img src="images/body02.png" alt="">
+	   </section>
+	   <script src="js/myFunc.js"></script>
+	   <script>
+	   	   window.addEventListener('load',function() {
+	   	   	   //获取头部的高度
+	   	   	   //var navTopHeight = $('head').offsetHeight;
+	   	   	   var navTopHeight = $('nav').offsetTop;
+	   	   	   //监听滚动
+	   	   	   window.addEventListener('scroll',function() {
+	   	   	   	   var scrollTopHeight = scroll().top;
+	   	   	   	   if (scrollTopHeight >= navTopHeight) {
+	   	   	   	   	   $('nav').className = 'nav';
+	   	   	   	   } else{
+	   	   	   	   	   $('nav').className = '';
+	   	   	   	   }
+	   	   	   })
+	   	   })
+	   </script>
+	</body>
+</html>

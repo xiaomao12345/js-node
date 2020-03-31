@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>定时器匀速动画</title>
+		<style>
+	        #box{
+	            width: 90px;
+	            height: 90px;
+	            background-color: red;
+	        }
+	    </style>
+	</head>
+	<body>
+		<button id="btn">开始动画</button>
+        <div id="box"></div>
+        <script>
+        	window.onload = function() {
+        		var btn = document.getElementById('btn');
+        		var box = document.getElementById('box');
+        		var timer,begin = 0,target = 599,step = 50;
+        		
+        		btn.addEventListener('click',function() {
+        			clearInterval(timer);
+        			
+        			timer = setInterval(function() {
+        				begin += step;
+        				box.style.marginLeft = begin + 'px';
+        				
+        				if(begin >= target) {
+        					begin = target;
+        					clearInterval(timer);
+        				}
+        				console.log(begin);
+        			},20)
+        		})
+        	}
+        </script>
+	</body>
+</html>

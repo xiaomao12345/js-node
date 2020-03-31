@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>正则表达式</title>
+		<link href="img/玩具鸭.png" rel="shortcut icon" />
+		<style>
+			form{
+				position: absolute;
+		        top: 50%;
+		        left: 50%;
+				width: 400px;
+				height: 300px;
+		        margin-left: -200px;/*负数，数值是宽度的一半*/
+		        margin-top: -150px;/*负数，数值是高度的一半*/
+				/*margin-top: 200px;*/
+				background-color: deepskyblue;
+				border-radius: 20px;
+			}
+			
+			.s1 {
+				width: 360px;
+				height: 30px;
+				float: left;
+				margin-left: 20px;
+				margin-top: 30px;
+				/*background-color: red;*/
+			}
+			.s1 h4{
+				color: black;
+				font-size: 16px;
+				font-family: '仿宋';
+				float: left;
+				margin-top: 5px;
+			}
+			.s1 input{
+				width: 270px;
+				height: 25px;
+				float: left;
+				/*border: none;*/
+				border: 1px solid #ccc;
+				line-height: 30px;
+				font-size: 12px;
+				border-radius: 5px;
+				padding-left: 5px;
+			}
+			span{
+				color: deepskyblue;
+				/*font-size: 16px;
+				font-family: '仿宋';*/
+			}
+			button{
+				width: 350px;
+				height: 25px;
+				float: left;
+				margin-left: 20px;
+				margin-top: 15px;
+				background-color: lightpink;
+				border: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="content-body">
+			<form>
+				<div class="s1">
+					<h4>手机号码:</h4>
+					<input id="phone" name="phone" type='text' placeholder="填写你的手机号码作为登录账户" />
+				</div>
+				<div class="s1">
+					<h4>邮<span>机号</span>箱:</h4>
+					<input type="text" id="email" name="email" placeholder="通用邮箱均可" />
+				</div>
+				<div class="s1">
+					<h4>姓<span>机号</span>名:</h4>
+					<input id="user" name='user' type="text" placeholder="如果有邀请码，请填写"/>
+				</div>
+				<div class="s1">
+					<h4>密<span>机号</span>码:</h4>
+					<input id="pwd" name='pwd' type="password" placeholder="以字母开头，长度在6~18之间，只能包含字母、数字和下划线"/>
+				</div>
+				<button>注 册</button>
+			</form>
+		</div>
+		<script id="正则表达式" type="text/html">
+			//regExp
+			/*正则表达式:用于定义一些字符串的规则，计算机可以根据正则表达式，
+			来检查一个字符串是否符合规则，或者将字符串中符合规则的内容提取出来*/
+			/*
+			  作用：
+			  匹配：判断给定的字符串是否符合正则表达式的过滤逻辑
+			  提取：可以通过正则表达式，从字符串中获取需要的特定成分
+			  替换：
+			*/
+			/*   \d:匹配数字      \w:匹配字母或数字或下划线*/
+			
+			//在线测试：http://c.runoob.com/front-end/854
+			
+			//邮编：^[1-9]\d{5}$   日期：^\d{4}-\d{1,2}-\d{1,2}$
+			//方法：test()测试       exec()提取一个内容   match()可以提取多个内容
+			
+			/*var reg = new RegExp('ab[a-z]','i');
+			var str = 'ABC';
+			console.log(reg.test(str));*/
+			
+			
+			//字面量形式
+			/*var reg = /ab[a-z]/;
+			var str = 'ABC';
+			console.log(reg.test(str));*/
+			
+			
+			//匹配日期
+			var dateStr = '2010-03-06';
+			var dateReg = /^\d{4}-\d{1,2}-\d{1,2}/;
+			console.log(dateReg.test(dateStr));
+			
+			
+			//匹配手机
+			var phoneNum = '15877889654';
+			var phoneReg = /^(13[0-9]|14[5|7]|15[0|1|2|3|4|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/;
+			console.log(phoneReg.test(phoneNum));
+			
+			
+			
+			var qqStr = '小撩：2462472123，大来：122222222，撩撩：1234567';
+			var reg = /\d+/g;
+			
+			//exec()提取
+			
+			
+			/*var content = reg.exec(qqStr);
+			console.log(content[0]);
+			
+			content = reg.exec(qqStr);
+			console.log(content[0]);
+			
+			content = reg.exec(qqStr);
+			console.log(content[0]);*/
+			/*do{
+				var content = reg.exec(qqStr);
+				if(content) {
+					console.log(content[0]);
+				}
+			}while (content)*/
+			
+			//match提取
+			/*var qqArr = qqStr.match(reg);
+			console.log(qqArr);*/
+			
+			
+			
+			//分组提取：()可以作为分组来使用
+			/*var dateStr = '2010-03-06';
+			var dateReg = /^(\d{4})-(\d{1,2})-(\d{1,2})/;
+			if(dateReg.test(dateStr)) {
+				console.log(RegExp.$1);
+				console.log(RegExp.$2);
+				console.log(RegExp.$3);
+			}*/
+			
+			
+			//替换
+			var str ='        qq  wwww  as  aa zzz ';
+			str1 = str.replace(/\s/g, '*');   //所有空格全用*代替
+			str2 = str.replace(/^\s*/, '*');  //开头空格用*代替
+			str3 = str.replace(/\s*$/, '*');  //结尾空格用*代替
+			console.log(str);
+			console.log(str1);
+			console.log(str2);
+			console.log(str3);
+			
+			
+			//分割
+			var dateStr = '2020-03-06';
+			console.log(dateStr.split('-'));
+			
+			
+			//贪婪和非贪婪
+			
+			var str = 'aaaaabbbbbbbbbbbaaaaa';
+			var res = str.match(/a.*b/);
+			console.log(res[0]);   //贪婪模式，所有符合的全部显示出来
+			
+			var res1 = str.match(/a.*?b/);
+			console.log(res1[0]);  //非贪婪模式，只匹配一个符合的
+		</script>
+		<script id="表单验证">
+			window.onload = function () {
+				//获取需要的标签
+				
+				//验证手机号码
+		        checkInput('phone',/^(13[0-9]|14[5|7]|15[0|1|2|3|4|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/);
+				
+				
+				//验证邮箱
+				checkInput('email',/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/);
+				
+				//验证姓名
+				checkInput('user',/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/);
+				
+				//验证密码
+				checkInput('pwd',/^[a-zA-Z]\w{5,17}$/);
+				
+				//封装
+				function checkInput(eleId,reg) {
+					var ele = document.getElementById(eleId);
+					ele.onblur = function(ev) {
+						if(!reg.test(this.value)) {
+							this.style.borderColor = '#ff0000';
+						}else{
+							this.style.borderColor = '#cccccc';
+						}
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

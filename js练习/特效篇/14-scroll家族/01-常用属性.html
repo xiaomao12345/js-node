@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>scroll常用属性</title>
+		<style>
+			body{
+				height: 3000px;
+			}
+		</style>
+	</head>
+	<body>
+		<script>
+			/* 
+			 * 严格模式：遵循w3c的标准对css进行解析(CSS1Compat)
+			 * 怪异模式：不遵循w3cschool的标准对css进行解析(BackCompat)
+			 * compatMode：判断浏览器是遵循什么模式(console.log(document.compatMode))
+			 */
+			//console.log(document.body.scrollTop);
+			window.onscroll = function(ev) {
+				//console.log(document.compatMode);
+				//console.log(document.body.scrollTop);
+				//console.log(document.documentElement.scrollTop);  //兼容
+				//console.log(document.documentElement.scrollTop || document.body.scrollTop);
+				//console.log(window.pageYOffset);
+				var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+				console.log(scrollTop);
+			}
+		</script>
+	</body>
+</html>

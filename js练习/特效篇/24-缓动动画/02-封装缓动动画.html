@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>封装缓动动画</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#box{
+				width:100px;
+				height: 100px;
+				background-color :red;
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<button id="btn">向右走</button>
+		<button id="btn1">向左走</button>
+		<div id="box"></div>
+		<script src="js/MyTool.js"></script>
+		<script>
+			window.addEventListener('load' ,function() {
+				var box = myTool.$('box');
+				
+				myTool.$('btn').addEventListener('click',function() {
+					myTool.buffer(box,800);
+				});
+				
+				myTool.$('btn1').addEventListener('click',function() {
+					myTool.buffer(box,200);
+				})
+			})
+			
+			/*function buffer(obj,target) {
+				//先清除后设置
+				clearInterval(obj.timer);
+					
+				//设置定时器
+				obj.timer = setInterval(function() {
+					//设置步长
+					var speed = (target - obj.offsetLeft) * 0.2;
+						
+					speed = (target > obj.offsetLeft) ? Math.ceil(speed) : Math.floor(speed);
+						
+					//动起来
+					obj.style.left = obj.offsetLeft + speed + 'px';
+					obj.innerHTML = obj.offsetLeft;
+						
+					//清除定时器
+					if (obj.offsetLeft === target) {
+						clearInterval(obj.timer);
+					}
+						
+			    },20)
+			}*/
+		</script>
+	</body>
+</html>

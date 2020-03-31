@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>天猫导航</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			body{
+				background-color: pink;
+			}
+			#nav{
+			    width: 900px;
+			    height: 63px;
+			    margin: 100px auto;
+			    border-radius: 5px;
+                position: relative;
+			    background: url('images/doubleOne.png') no-repeat right center #fff;
+			}
+			#nav ul{
+				position: relative;
+			}
+			#nav ul li{
+				float: left;
+				width: 88px;
+	            height: 63px;
+	            text-align: center;
+	            line-height: 70px;
+	            cursor: pointer;
+			}
+			#t_mall{
+				width: 88px;
+	            height: 63px;
+	            background: url("images/tMall.png") no-repeat;
+	            position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<nav id="nav">
+		    <span id="t_mall"></span>
+		    <ul>
+		        <li>双11狂欢</li>
+		        <li>服装会场</li>
+		        <li>数码家电</li>
+		        <li>家具建材</li>
+		        <li>母婴童装</li>
+		        <li>手机会场</li>
+		        <li>美妆会场</li>
+		        <li>进口会场</li>
+		        <li>飞猪旅行</li>
+		    </ul>
+		</nav>
+		<script>
+			window.onload = function(ev) {
+				var nav = $('nav');
+				var t_mall = nav.children[0];
+				var ul = nav.children[1];
+				var allList = ul.children;
+				
+				var beginX = 0;
+				for(var i = 0; i < allList.length; i++) {
+					var li = allList[i];
+					
+					li.onmouseover = function(ev) {
+						end = this.offsetLeft;
+					};
+					
+					li.onmousedown = function(ev) {
+						beginX = this.offsetLeft;
+					};
+					
+					li.onmouseout = function(ev) {
+						end = beginX;
+					};
+				}
+				
+				var begin = 0, end = 0;
+				setInterval(function() {
+					begin = begin + (end - begin) * 0.2;
+					t_mall.style.left = begin + 'px';
+				},10);
+				
+				function $(id) {
+					return typeof id === 'string' ? document.getElementById(id) : null;
+				}
+			}
+		</script>
+	</body>
+</html>

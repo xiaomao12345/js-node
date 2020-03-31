@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script src="js/Underscore-min.js"></script>
+<script>
+    var dataArr = ["张三", 19, "男", 1212, 23];
+    
+    _.each(dataArr, function (item, index) {
+         console.log(item, index);
+    });
+
+     console.log(_.without(dataArr, "张三"));
+
+    console.log(_.random(-5, 5));
+</script>
+</body>
+</html>

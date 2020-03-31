@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>风景相册</title>
+		<link href="img/玩具鸭.png" rel="shortcut icon" />
+		<style>
+	        *{
+	            margin: 0;
+	            padding: 0;
+	        }
+	
+	        body{
+	            margin: 50px;
+	        }
+	
+	        #fj{
+	            list-style: none;
+	        }
+	
+	        #fj li{
+	            float: left;
+	            margin-left: 10px;
+	        }
+	
+	        #big_img{
+	            margin-left: 10px;
+	        }
+	
+	        #des{
+	            margin: 10px;
+	            color: orangered;
+	            font-size: 20px;
+	        }
+	    </style>
+	</head>
+	<body>
+		<!--大图描述-->
+	    <p id="des">蒲公英</p>
+	    <!--大图展示-->
+	    <img id="big_img" src="img/1.jpg" alt="" width="540">
+	    <!--小图列表-->
+	    <ul id="fj">
+	        <li>
+	            <a href="img/1.jpg" title="蒲公英">
+	                <img src="img/1.jpg" width="100" alt="蒲公英">
+	            </a>
+	        </li>
+	        <li>
+	            <a href="img/2.jpg" title="热气球">
+	                <img src="img/2.jpg" width="100" alt="热气球">
+	            </a>
+	        </li>
+	        <li>
+	            <a href="img/3.jpg" title="别致小屋">
+	                <img src="img/3.jpg" width="100" alt="别致小屋">
+	            </a>
+	        </li>
+	        <li>
+	            <a href="img/4.jpg" title="高山湖水">
+	                <img src="img/4.jpg" width="100" alt="高山湖水">
+	            </a>
+	        </li>
+	        <li>
+	            <a href="img/5.jpg" title="高速公路">
+	                <img src="img/5.jpg" width="100" alt="高速公路">
+	            </a>
+	        </li>
+	    </ul>
+	    <script>
+	    	window.onload = function () {
+	    		var des = document.getElementById('des');
+	    		var big_img = document.getElementById('big_img');
+	    		var fj = document.getElementById('fj');
+	    		var aList = fj.getElementsByTagName('a');
+	    		
+	    		for (var i = 0; i < aList.length; i++) {
+	    			aList[i].onclick = function() {
+	    				des.innerText = this.title;
+	    				big_img.setAttribute('src',this.href);
+	    				//big_img.src = this.href;
+	    				return false;
+	    			}
+	    		}
+	    	}
+	    </script>
+	</body>
+</html>

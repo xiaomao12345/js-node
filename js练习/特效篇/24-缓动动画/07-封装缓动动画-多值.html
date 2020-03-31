@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>封装缓动动画函数-多值</title>
+		<style>
+	        *{
+	            margin: 0;
+	            padding: 0;
+	        }
+	
+	        #box{
+	            width: 100px;
+	            height: 100px;
+	            background-color: red;
+	
+	            position: absolute;
+	        }
+	    </style>
+	</head>
+	<body>
+		<button id="btn">往右走</button>
+	    <button id="btn1">往左走</button>
+	    <div id="box"></div>
+	    <script src="js/MyTool.js"></script>
+	    <script>
+	    	window.addEventListener('load',function() {
+	    		var box = myTool.$('box');
+	    		
+	    		myTool.$('btn').addEventListener('click',function() {
+	    			buffer(box,{"left": 800, "top": 120, "width": 230, "height": 400});
+	    		});
+	    		
+	    		myTool.$('btn1').addEventListener('click',function() {
+	    			buffer(box,{"left": 100, "top": 100, "width": 50, "height": 200});
+	    		});
+	    	});
+	    	
+	    	function buffer(obj,json) {
+	    		//清除定时器
+	    		clearInterval(obj.timer);
+	    		
+	    		//定义变量
+	    		var speed = 0, begin = 0, target = 0;
+	    		//设置定时器
+	    		obj.timer = setInterval(function() {
+	    			
+	    			for (var key in json) {
+	    				begin = parseInt(myTool.getCSSAttrValue(obj,key)) || 0;
+	    				target = parseInt(json[key]);
+	    				
+	    				speed = (target - begin) * 0.2;
+	    				speed = (target > begin) ? Math.ceil(speed) : Math.floor(speed);
+	    				//console.log(speed);
+	    				
+	    				obj.style[key] = begin + speed + 'px';
+	    				
+	    				if(begin === target){
+			                clearInterval(obj.timer);
+			            }
+	    				
+	    			} 
+	    		},20)
+	    		
+	    	}
+	    </script>
+	</body>
+</html>

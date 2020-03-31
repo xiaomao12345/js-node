@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js练习</title>
+		<link href="img/玩具鸭.png" rel="shortcut icon"/>
+	</head>
+	<body>
+		<script id="if" type="text/html">
+			//从键盘中输入一个整数，判断其是否是偶数，如果是偶数就输出YES，否则输出NO
+			
+			/*var num;
+			num = parseInt(window.prompt("请输入一个整数：\n"));
+			if(isNaN(num)){
+				console.log("你是SB么");
+			}else{
+				if( num % 2 == 0){
+					alert("YES");
+				}else{
+					alert("NO");
+				}
+				//(num % 2 == 0) ? alert("YES") :  alert("NO");
+			}*/
+			
+			
+			
+			
+			
+			//接受用户输出的1-7的整数，根据用户输入的整数，输出对应的星期几
+			/*var num;
+			num = parseInt(window.prompt("请输入1-7之间的一个整数：\n"));
+			if(isNaN(num)){
+				alert("你是傻逼么？")
+			}else{
+				if( num == 1){
+					console.log("星期一");
+				}else if( num == 2){
+					console.log("星期二");
+				}else if( num == 3){
+					console.log("星期三");
+				}else if( num == 4){
+					console.log("星期四");
+				}else if( num == 5){
+					console.log("星期五");
+				}else if( num == 6){
+					console.log("星期六");
+				}else if( num == 7){
+					console.log("星期日");
+				}else {
+					console.log("gunduzi");
+				}
+			}*/
+			
+			
+			
+			//接受用户输入的一个整数month代表月份，根据月份输出对应的季节
+			/*var month;
+			month = parseInt(window.prompt("请输入一个整数：\n"));
+			if(isNaN(month)) {
+				alert("你是傻逼么？")
+			}else{
+				if(month < 1 || month > 12){
+		            alert("火星季节");
+		        }else if(month >= 3 && month <= 5){
+		            alert("春季 ");
+		        }else if(month >=6 && month <= 8){
+		            alert("夏季");
+		        }else if(month >=9 && month <= 11){
+		            alert("秋季");
+		        }else{
+		            alert("冬季");
+		        }
+			}*/
+			
+			
+			//从键盘中输入两个整数，判断大小后输出较大的那个数
+			/*var num1,num2;
+			num1 = parseInt(window.prompt("请输入第一个整数：\n"));
+			num2 = parseInt(window.prompt("请输入第二个整数：\n"));
+			console.log(num1,num2);
+			if(num1 > num2) {
+				console.log("max = " + num1);
+			}else if(num1 < num2) {
+				console.log("max = " + num2)
+			}else{
+				console.log("max = " + num1);
+			}*/
+			
+			
+			    /*//    1.定义变量保存三个整数
+			    var a, b;
+			    //    2.利用window.prompt接收用户输入的数据
+			    a =  +(window.prompt("请输入内容")); 
+			    b =  +(window.prompt("请输入内容")); 
+			    //    3.利用if进行两两比较
+			    if(a > b){
+			        console.log(a);
+			    }else{
+			        console.log(b);
+			    }*/
+				    /*
+				    三元运算符好处：可以简化if else代码
+				    弊端                  ：因为是一个运算符所以运算完必要要有一个结果。  
+				    简单用三元 复杂用if(阅读性好)
+				    */
+//			    console.log(a > b? a: b);
+
+
+			//从键盘中输入三个数，排序后输出
+			var a,b,c;
+			a =  +(window.prompt("请输入第一个数")); 
+			b =  +(window.prompt("请输入第二个数")); 
+			c =  +(window.prompt("请输入第三个数"));
+			console.log(a,b,c);
+			
+			// 方式1 常规排序
+			/*if (a >= b && b >=c) {
+		        console.log(a, b, c);
+		    }else if (a >= c && c >= b) {
+		        console.log(a, c, b);
+		    }else if (b >= a && a >= c) {
+		        console.log(b, a, c);
+		    }else if (b >= c && c >= a) {
+		        console.log(b, c, a);
+		    }else if (c >= a && a >= b) {
+		        console.log(c, a, b);
+		    }else if (c >= b && b >= a) {
+		        console.log(c, b, a);
+		    }*/
+		    
+		    // 方式2 选择排序
+		    /*var temp;
+		    if (a > b) {
+		        temp = a;
+		        a = b;
+		        b = temp;
+		    }
+		    if (a > c) {
+		        temp = a;
+		        a = c;
+		        c = temp;
+		    }
+		    if ( b > c) {
+		        temp = b;
+		        b = c;
+		        c = temp;
+		    }
+		    console.log(a, b, c);*/
+		    
+		    //   方式3 冒泡排序
+		    var temp;
+		    if (a > b) {
+		        temp = a;
+		        a = b;
+		        b = temp;
+		    }
+		    if (b > c) {
+		        temp = b;
+		        b = c;
+		        c = temp;
+		    }
+		    if ( a > b) {
+		        temp = a;
+		        a = b;
+		        b = temp;
+		    }
+		    console.log(a, b, c);
+		</script>
+		
+		<script id="switch" type="text/html">
+			//1. 从键盘输入一个月份,输出对应季节 12~2 冬季 3~5 春季 6~ 8 夏季 9~11 秋季(用switch)
+			/*var month;
+			month = parseInt(window.prompt("请输入一个整数：\n"));
+			if(isNaN(month)){
+				console.log("你是SB么");
+			}else {
+				switch(month){
+					case 3:
+					case 4:
+					case 5:
+					    alert("春季");
+					    break;
+					case 6:
+					case 7:
+					case 8:
+					    alert("夏季");
+					    break;
+					case 9:
+					case 10:
+					case 11:
+					    alert("秋季");
+					    break;
+					case 12:
+					case 1:
+					case 2:
+					    alert("冬季");
+					    break;
+					default:
+					    alert("SB");
+					    break;
+				}
+			}*/
+			
+			
+			//  2.使用switch实现简单的计算器
+			
+			
+			
+			// 2-1.定义变量保存用户输入
+		    var num1,num2,op,result;
+		    // 2-2.接收用户输入
+		    num1 = +(window.prompt("请输入第一个数字"));
+		    op = window.prompt("请输入运算符: + - * /");
+		    num2 = +(window.prompt("请输入第二个数字:"));
+		    // 2-3.根据用户输入计算结果
+		    switch (op) {
+		        case "+":
+		            result = num1+num2;
+		            break;
+		        case "-":
+		            result = num1-num2;
+		            break;
+		        case "*":
+		            result = num1*num2;
+		            break;
+		        case "/":
+		            result = num1/num2;
+		            break;
+		        default:
+		            alert("更多功能请使用付费版本");
+		            break;
+		    }
+		    // 2-4.输出结果
+		    alert("计算结果:" + result);
+		</script>
+		
+		<script id="for" type="text/html">
+			//矩形绘制
+			/*
+			    ****
+				****
+				**** 
+			*/
+			//外循环控制行数
+			window.document.write("矩形绘制");
+			window.document.write("<br>");
+			for (var i=0; i<3 ;i++) {
+				//内循环控制列数
+				for (var j=0; j<4; j++) {
+					window.document.write("*\t");
+				}
+				window.document.write("<br>");
+			}
+			
+			
+			
+			
+			
+			//三角形绘制
+			/*
+			    *
+				**
+				***
+				****
+				*****
+			 */
+			window.document.write("<br>");
+			window.document.write("绘制三角形");
+			window.document.write("<br>");
+			for (var i=0; i<6 ;i++) {
+				//内循环控制列数
+				for (var j=0; j<i; j++) {
+					window.document.write("*\t");
+				}
+				window.document.write("<br>");
+			}
+			
+			
+			//三角形绘制
+			/*
+			    *****
+				****
+				***
+				**
+				*
+			 */
+			window.document.write("<br>");
+			window.document.write("绘制三角形");
+			window.document.write("<br>");
+			for(var i = 0; i< 5; i++){
+		        for(var j = i; j < 5; j++){
+		            window.document.write("*\t");
+		        }
+		        window.document.write("<br/>");
+		    }
+			
+			
+			//正三角形绘制
+			/*
+			    -----*
+				----***
+				---*****
+				--*******
+				-*********
+				***********
+			 */
+			window.document.write("<br>");
+			window.document.write("绘制三角形");
+			window.document.write("<br>");
+			for (var i = 0; i <= 5; i++) {
+		        for (var j = 0; j < 5 - i; j++) {
+		            window.document.write("-");
+		        }
+		        for (var m = 0; m < 2*i+1; m++) {
+		            window.document.write("*");
+		        }
+		        window.document.write("<br/>");
+		    }
+			
+			//绘制三角形
+			/*
+			    1
+				12
+				123
+			 */
+			window.document.write("<br>");
+			window.document.write("绘制三角形");
+			window.document.write("<br>");
+			for (var i = 0; i < 3; i++) {
+		        for (var j = 0; j <= i; j++) {
+		            window.document.write(j+1+"");
+		        }
+		        window.document.write("<br/>");
+		    }
+		</script>
+		
+		<script id="数组和函数">
+			//请写出一个判断一个数是不是偶数的函数?
+			/*function isEven(num) {
+				if(isNaN(num)) {
+					alert("参数不正确！");
+					return;
+				}
+				if (num % 2 == 0) {
+					return '偶数';
+				} else{
+					return '奇数';
+				}
+			}
+			var num1 = isEven("aaaaa");
+			console.log(num1);*/
+			
+			
+			/*function isEven(num) {
+				//验证
+				if (typeof num !== 'number') {
+					alert("参数不正确");
+					return;
+				}
+				//console.log('00000');
+				//判断
+				if (num % 2 === 0) {
+					return '偶数';
+				}else {
+					return '奇数';
+				}
+			}
+			var f1 = isEven("aaaaa");
+			console.log(f1);*/
+			
+			
+			
+			//请模拟写出一个Math.min(x,y)  的函数?
+			/*function getMin(){
+				var minValue = arguments[0];
+				for (var i = 0; i < arguments.length; i++) {
+					if(arguments[i] < minValue) {
+						minValue = arguments[i];
+					}
+				}
+				return minValue;
+			}
+			var minValue = getMin(12,4,-2,11,-100);
+			console.log(minValue);*/
+			
+			/*function getMin() {
+				var minValue = arguments[0];
+				for(var i = 0; i < arguments.length; i++) {
+					if(arguments[i] < minValue) {
+						minValue = arguments[i];
+					}
+				}
+				return minValue;
+			}
+			var minValue = getMin(10,2,-13,11);
+			console.log(minValue);*/
+			
+			
+			
+			
+			//回调函数
+			
+			//从前有座山，山里有座庙, .....
+			/*var i = 100;
+
+	        function f1 () {
+	            i--;
+	            //递归的结束条件
+	            if (i >= 0) {
+	                console.log("从前有座山，山上有座庙" + i);
+	                //递归调用
+	                f1();
+	            }
+	
+	        }
+	        f1();*/
+	        /*function mon(count){
+	        	for (var i = 1 ; i < count.length; i++) {
+	        		console.log("从前有座山，山上有座庙" + i);
+	        		mon();
+	        	}
+	        }
+	        console.log(mon(100));*/
+	        var num = 0;
+			while(num < 520) {
+				num++;
+				console.log("从前有座山，山上有座庙" + num);
+			}
+	        //求n个数的累加
+	        /*function getSum (count) {
+	            var  sum = 0;
+	            for (var i = 1 ; i <= count; i++) {
+	            	sum += i;
+	            }
+	            return sum;
+	        }
+	
+	        console.log(getSum(100));*/
+	        
+		</script>
+	</body>
+</html>

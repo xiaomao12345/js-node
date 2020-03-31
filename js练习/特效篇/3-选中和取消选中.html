@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>选中和取消选中</title>
+		<style>
+			*{
+	            margin: 0;
+	            padding: 0;
+	            list-style: none;
+	        }
+	
+	        #panel{
+	            width: 400px;
+	            box-shadow: 0 0 10px #000;
+	            margin: 100px auto;
+	            padding: 20px;
+	        }
+	
+	        .panel-header{
+	            text-align: center;
+	            margin-bottom: 10px;
+	        }
+	
+	        .panel-footer{
+	            text-align: center;
+	            margin-top: 10px;
+	        }
+		</style>
+	</head>
+	<body>
+		<div id="panel">
+			<section class="panel-header">
+	            <h2>歌曲排行版</h2>
+	            <hr>
+	        </section>
+	        <section class="panel-content">
+	        	<!--checkbox复选框默认属性为checked="false" 默认不选中-->
+	        	<label><input type="checkbox"></label>1.时间都去哪了<br>
+	        	<label><input type="checkbox"></label>2.海阔天空<br>
+	        	<label><input type="checkbox"></label>3真的爱你<br>
+	        	<label><input type="checkbox"></label>4.不再犹豫<br>
+	        	<label><input type="checkbox"></label>5.光辉岁月<br>
+	        	<label><input type="checkbox"></label>6.喜欢妳<br>
+	        	<label><input type="checkbox"></label>7.偏偏喜欢你<br>
+	        	<label><input type="checkbox"></label>8.爱拼才会赢<br>
+	        	<label><input type="checkbox"></label>9.老街<br>
+	        </section>
+	        <section class="panel-footer">
+	            <hr>
+	            <button id="allSelect">全选</button>
+	            <button id="cancelSelect">取消选中</button>
+	            <button id="reverseSelect">反选</button>
+	        </section>
+		</div>
+		<script>
+			window.onload = function() {
+				//获取所有的复选框
+				var　inputs = document.querySelectorAll('input');
+				
+				//全选
+				$('allSelect').addEventListener('click',function() {
+					for (var i = 0; i < inputs.length ; i++) {
+						var input = inputs[i];
+						input.checked = true;
+					}
+				})
+				//取消选中
+				$('cancelSelect').addEventListener('click',function() {
+					for (var i = 0; i < inputs.length ; i++) {
+						var input = inputs[i];
+						input.checked = false;
+					}
+				})
+				//反选
+				$('reverseSelect').addEventListener('click',function() {
+					for (var i = 0; i < inputs.length ; i++) {
+						var input = inputs[i];
+						//console.log(input.checked);
+						input.checked = !input.checked;
+						/*if (input.checked === true) {
+							input.checked = false;
+						} else{
+							input.checked = true;
+						}*/
+						
+					}
+				})
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				function $(id) {
+					return typeof id === 'string' ? document.getElementById(id) : null;
+				}
+			}
+		</script>
+	</body>
+</html>

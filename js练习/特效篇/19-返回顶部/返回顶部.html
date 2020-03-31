@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>返回顶部</title>
+		<style>
+	        * {
+	            margin: 0;
+	            padding: 0;
+	            list-style: none;
+	            border: none;
+	        }
+	
+	        body {
+	            background-color: #ccc;
+	        }
+	
+	        p {
+	            margin-bottom: 20px;
+	            text-align: center;
+	        }
+	
+	        #top {
+	            width: 43px;
+	            height: 43px;
+	            background: url("images/top.png") no-repeat;
+	            background-size: 100% 100%;
+	            position: fixed;
+	            right: 10px;
+	            bottom: 30px;
+	            display: none;
+	        }
+	    </style>
+	</head>
+	<body>
+		<span id="top"></span>
+		<p>今天天气很好!</p>
+		<p>今天天气很好!</p>
+		<p>今天天气很好!</p>
+		<p>今天天气很好!</p>
+		<p>今天天气很好!</p>
+		<p>今天天气很好!</p>
+		<p>今天天气很好!</p>
+		<p>今天天气很好!</p>
+		<p>今天天气很好!</p>
+		<p>今天天气很好!</p>
+		<p>今天天气很好!</p>
+		<p>今天天气很好!</p>
+		<p>今天天气很好!</p>
+		<p>今天天气很好!</p>
+		<p>今天天气很好!</p>
+		<p>今天天气很好!</p>
+		<p>今天天气很好!</p>
+		<p>今天天气很好!</p>
+		<p>今天天气很好!</p>
+		<p>今天天气很好!</p>
+		<p>今天天气很好!</p>
+		<p>今天天气很好!</p>
+		<p>今天天气很好!</p>
+		<p>今天天气很好!</p>
+		<p>今天天气很好!</p>
+		<p>今天天气很好!</p>
+		<p>今天天气很好!</p>
+		<p>今天天气很好!</p>
+		<p>今天天气很好!</p>
+		<p>今天天气很好!</p>
+		<p>今天天气很好!</p>
+		<p>今天天气很好!</p>
+		<p>今天天气很好!</p>
+		<p>今天天气很好!</p>
+		<p>今天天气很好!</p>
+		<p>今天天气很好!</p>
+		<p>今天天气很好!</p>
+		<p>今天天气很好!</p>
+		<p>今天天气很好!</p>
+		<p>今天天气很好!</p>
+		<p>今天天气很好!</p>
+		<p>今天天气很好!</p>
+		<p>今天天气很好!</p>
+		<p>今天天气很好!</p>
+		<p>今天天气很好!</p>
+		<p>今天天气很好!</p>
+		<p>今天天气很好!</p>
+		<p>今天天气很好!</p>
+		<p>今天天气很好!</p>
+		<script src="js/myFunc.js"></script>
+		<script>
+			window.addEventListener("load" , function() {
+				//定义变量
+				var scrollTopH = 0, begin = 0, end = 0, timeId = 0;
+				
+				//监听滚动
+				window.addEventListener('scroll' ,function() {
+					scrollTopH = scroll().top;
+					
+					scrollTopH > 0 ? show($('top')) : hide($('top'));
+					
+					begin = scrollTopH;
+				});
+				
+				//监听点击
+				window.addEventListener('click' ,function() {
+					clearInterval(timeId);
+					
+					timeId = setInterval(function() {
+						begin += (end - begin) * 0.2;
+						window.scrollTo(0,begin);
+						
+						if(Math.round(begin) === end) {
+							clearInterval(timeId);
+						}
+					},20)
+				})
+			})
+		</script>
+	</body>
+</html>

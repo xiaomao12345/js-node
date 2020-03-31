@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>放假倒计时</title>
+		<style>
+	        #time{
+	            font-size: 40px;
+	            color: red;
+	            text-align: center;
+	        }
+	    </style>
+	</head>
+	<body>
+		<div id="time"></div>
+		<script>
+			window.onload = function() {
+				// 1.获取需要的标签
+				var time = document.getElementById('time');
+				var currentDate,currentTime,nextTime,allTime;
+				
+				// 2. 自定义将来的时间
+				var nextDate = new Date('2020/05/01 00:00:00');
+				
+				// 3.设置定时器
+				setInterval(function() {
+					// 4.获取现在的时间
+					currentDate = new Date;
+					
+					// 5.获取毫秒数
+					currentTime = currentDate.getTime();
+					nextTime = nextDate.getTime();
+					
+					// 6. 剩下的时间戳
+                    allTime = nextTime - currentTime;
+                    
+                    // 7.转换
+                    var allSecond = parseInt(allTime / 1000); //毫秒转成秒
+                    
+                    var d =size(parseInt(allSecond / 3600 / 24)); //天
+                    var h =size(parseInt(allSecond / 3600 % 24)); //时
+                    var m =size(parseInt(allSecond / 60 % 60)); //分
+                    var s =size(parseInt(allSecond % 60)); //秒
+                    
+                    
+                    //  8.注入
+                    time.innerText = '距离放假还剩：' + d + '天' + h + '小时' + m + '分钟' + s + '秒';
+				},1000)
+				
+				//封装判断函数
+				function size(num) {
+					return num < 10 ? '0' + num : num;
+				}
+				
+			}
+		</script>
+	</body>
+</html>
